@@ -1,7 +1,7 @@
 import os
 from box.exceptions import BoxValueError 
 import yaml
-from mlProject import logger
+from mlproject import logger
 import json 
 import joblib 
 from ensure import ensure_annotations
@@ -10,7 +10,7 @@ from pathlib import Path
 from typing import Any 
 
 @ensure_annotations
-def save_size(path:Path) -> Any:
+def get_size(path:Path) -> str:
     """get the size of 
 
     Args:
