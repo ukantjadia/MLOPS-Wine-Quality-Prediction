@@ -52,6 +52,11 @@ class DataTransformation:
         df['quality'] = df['quality'].replace(low,0)
         df['quality'] = df['quality'].replace(average,1)
         df['quality'] = df['quality'].replace(high,2)
+        
+        # normalizing the category col 
+        df['category'] = np.where(df['category'] == "white",0,1)
+        
+        # dropping all nan values generated due to above operation
         df=df.dropna(axis=0)
         
         # normalizing with z score method
@@ -66,7 +71,7 @@ class DataTransformation:
     def train_test_spliting(self):
         """create the training and testing data
         """
-        data = pd.read_csv(self.config.data_path)
+        data = pd.read_csv(self.config.clean_data)
         train, test = train_test_split(data)
         train.to_csv(os.path.join(self.config.root_dir, "train.csv"), index=False)
         test.to_csv(os.path.join(self.config.root_dir, "test.csv"), index=False)
