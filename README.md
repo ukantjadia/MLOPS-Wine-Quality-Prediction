@@ -73,6 +73,32 @@ Now,
 ```bash
 open up you local host and port
 ```
+### STEP 03- set some python env variable for tracking  
+
+**In conda env**
+
+```python 
+
+# to set new variable 
+conda env config vars set MY_VARIABLE=my_value 
+
+# to access that variable 
+os.environ.get('MY_VARIABLE')
+
+# to see all available variables 
+conda env config vars list
+
+```
+**In normal python env**
+
+```python 
+# to set new variable
+set MY_VARIABLE=my_value
+
+# to access that variable 
+os.environ.get('MY_VARIABLE')
+
+```
 
 
 
@@ -89,7 +115,7 @@ open up you local host and port
 
 MLFLOW_TRACKING_URI=https://dagshub.com/ukantjadia/MLOPS-Wine-Quality-Prediction.mlflow \
 MLFLOW_TRACKING_USERNAME=ukantjadia \
-MLFLOW_TRACKING_PASSWORD=cb7df2a64a9e62c2f3b5a892a1e0593545a8ea77 \
+MLFLOW_TRACKING_PASSWORD=******** \
 python script.py
 
 Run this to export as env variables:
@@ -100,6 +126,6 @@ export MLFLOW_TRACKING_URI=https://dagshub.com/ukantjadia/MLOPS-Wine-Quality-Pre
 
 export MLFLOW_TRACKING_USERNAME=ukantjadia 
 
-export MLFLOW_TRACKING_PASSWORD=cb7df2a64a9e62c2f3b5a892a1e0593545a8ea77
+export MLFLOW_TRACKING_PASSWORD=********
 
 ```
