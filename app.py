@@ -1,5 +1,6 @@
 from flask import Flask, render_template, request  
 import os 
+from mlproject import logger
 import numpy as np 
 from mlproject.pipeline.prediction import PredictionPipeline
 
@@ -29,14 +30,26 @@ def index():
             pH = float(request.form['pH'])
             sulphates = float(request.form['sulphates'])
             alcohol = float(request.form['alcohol'])
+            category = float(request.form['category'])
             
             
-            data = [fixed_acidity,volatile_acidity,citric_acid,residual_sugar,chlorides,free_sulfur_dioxide,total_sulfur_dioxide,density,pH,sulphates,alcohol]
+            data = [fixed_acidity,
+                    volatile_acidity,
+                    citric_acid,
+                    residual_sugar,
+                    chlorides,
+                    free_sulfur_dioxide,
+                    total_sulfur_dioxide,
+                    density,
+                    pH,
+                    sulphates,
+                    alcohol,
+                    category]
             
-            data = np.array(data).reshape(-1,1)
+            data = np.array(data).reshape(1,12)
             
             obj = PredictionPipeline()
-            predict = obj.predict(obj)
+            predict = obj.predict(data)
             
             return render_template('results.html',prediction=str(predict))
         except Exception as e :
